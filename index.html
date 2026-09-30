@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="SKG Port Agency provides professional port agency and maritime support services at the Port of Thessaloniki, Greece." />
+  <meta name="theme-color" content="#061a2a" />
+  <title>SKG Port Agency | Thessaloniki</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #061a2a;
+      --blue: #087fae;
+      --cyan: #24b7e5;
+      --light: #f4f8fa;
+      --text: #263746;
+      --muted: #72818c;
+      --border: #dfe8ed;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .header {
+      position: absolute;
+      z-index: 10;
+      inset: 0 0 auto;
+      color: #fff;
+    }
+
+    .navbar {
+      display: flex;
+      height: 92px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav a {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--cyan);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      padding: 5px;
+      color: #fff;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .hero {
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      color: #fff;
+      background:
+        linear-gradient(90deg,
+          rgba(3, 17, 28, 0.96),
+          rgba(3, 17, 28, 0.65),
+          rgba(3, 17, 28, 0.25)),
+        url("./images/skg-vessel-harbor.jpg") center / cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding-top: 70px;
+    }
+
+    .eyebrow {
+      margin-bottom: 20px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0 0 28px;
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 0 38px;
+      color: #e1ebf0;
+      font-size: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 2px;
+      padding: 16px 30px;
+      color: #fff;
+      background: var(--blue);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: var(--cyan);
+    }
+
+    .button-outline {
+      margin-left: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: transparent;
+    }
+
+    .button-outline:hover {
+      color: var(--navy);
+      background: #fff;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      margin: 0 0 16px;
+      color: var(--navy);
+      font-size: 44px;
+      line-height: 1.15;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .about-image {
+      min-height: 500px;
+      border-radius: 4px;
+      background: url("./images/skg-container-vessel.jpg") center / cover no-repeat;
+    }
+
+    .about-content h2 {
+      margin: 0 0 22px;
+      color: var(--navy);
+      font-size: 44px;
+      line-height: 1.15;
+    }
+
+    .about-content p {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .check {
+      display: flex;
+      align-items: flex-start;
+      margin: 13px 0;
+      font-weight: 700;
+    }
+
+    .check-mark {
+      flex: 0 0 auto;
+      margin-right: 10px;
+      color: var(--cyan);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .services-section,
+    .contact-section {
+      background: var(--light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      border: 1px solid var(--border);
+      padding: 35px 30px;
+      background: #fff;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(5, 32, 50, 0.12);
+    }
+
+    .service-icon,
+    .contact-icon {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 20px;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--blue);
+      background: #e8f6fb;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .service-icon svg,
+    .contact-icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.8;
+    }
+
+    .service-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 19px;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      border-radius: 4px;
+      padding: 60px 40px;
+      color: #fff;
+      background: var(--navy);
+      text-align: center;
+    }
+
+    .stat h3 {
+      margin: 0 0 5px;
+      color: var(--cyan);
+      font-size: 42px;
+    }
+
+    .stat p {
+      margin: 0;
+      color: #b0c4de;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .contact-icon {
+      flex: 0 0 52px;
+      margin: 0;
+    }
+
+    .contact-item h3 {
+      margin: 0 0 4px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .contact-item p {
+      margin: 0;
+    }
+
+    .contact-item a:hover {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 14px;
+      color: var(--text);
+      background: #fff;
+      font: 14px Arial, Helvetica, sans-serif;
+    }
+
+    .contact-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--blue);
+    }
+
+    .form-note,
+    .form-status {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .form-status {
+      color: #16734e;
+      font-weight: 700;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 60px 0 20px;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 40px;
+    }
+
+    .footer-content p {
+      margin: 0;
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    @media (max-width: 992px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav {
+        position: absolute;
+        top: 92px;
+        left: 0;
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        background: var(--navy);
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .services-grid,
+      .contact-wrap,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .button-outline {
+        margin-top: 10px;
+        margin-left: 0;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .section-title h2,
+      .about-content h2 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .logo {
+        font-size: 19px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .button {
+        padding: 14px 20px;
+      }
+
+      .about-image {
+        min-height: 340px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container navbar">
+      <a class="logo" href="#home" aria-label="SKG Port Agency home">SKG <span>PORT AGENCY</span></a>
+      <nav class="nav" id="site-navigation" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#port">The Port</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+        aria-controls="site-navigation">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Ship Agency &amp; Maritime Services</div>
+          <h1>Port Services in Thessaloniki</h1>
+          <p>
+            We provide complete support for vessels, crews, and cargo at the
+            Port of Thessaloniki with speed, safety, and absolute consistency
+            24/7.
+          </p>
+          <a class="button" href="#contact">Contact Us</a>
+          <a class="button button-outline" href="#services">Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about-image" role="img" aria-label="Cargo vessel at a port"></div>
+        <div class="about-content">
+          <h2>Specialized Ship Agency Services</h2>
+          <p>
+            SKG Port Agency specializes in delivering high-quality maritime
+            services. With years of experience at the Port of Thessaloniki,
+            we ensure smooth and efficient handling for every type of vessel.
+          </p>
+          <div class="check"><span class="check-mark">✓</span>24/7 availability and support</div>
+          <div class="check"><span class="check-mark">✓</span>Fast processing of port formalities</div>
+          <div class="check"><span class="check-mark">✓</span>Experienced and specialized team</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Services</h2>
+          <p>
+            We offer a comprehensive range of maritime services tailored to
+            your needs.
+          </p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 17h18l-2 4H6l-3-4Z" />
+                <path
+                  d="M5 17V8h14v9M8 8V5h8v3M2 21c1 .7 2 .7 3 0 1 .7 2 .7 3 0 1 .7 2 .7 3 0 1 .7 2 .7 3 0 1 .7 2 .7 3 0 1 .7 2 .7 3 0" />
+              </svg>
+            </div>
+            <h3>Ship Agency</h3>
+            <p>
+              Full management and coordination throughout the vessel’s
+              arrival, stay, and departure from the port.
+            </p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="9" cy="8" r="3" />
+                <path d="M3 20v-1a6 6 0 0 1 12 0v1H3ZM17 5a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5v1h-3" />
+              </svg>
+            </div>
+            <h3>Crew Support</h3>
+            <p>
+              Travel arrangements, crew changes, medical care, and visa
+              assistance for every member of your crew.
+            </p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 7h8v14H3zM13 3h8v18h-8zM5 10h4M15 7h4M15 11h4M15 15h4" />
+              </svg>
+            </div>
+            <h3>Cargo Management</h3>
+            <p>
+              Supervision of loading and unloading, customs formalities, and
+              freight forwarding logistics.
+            </p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 21V4h8v17M5 21h12M15 8h3l3 3v6h-6M10 8h2M10 12h2M10 16h2" />
+              </svg>
+            </div>
+            <h3>Provisions &amp; Bunkering</h3>
+            <p>
+              Coordination of bunkering, spare parts, food supplies, and
+              fresh drinking water.
+            </p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M14.5 6.5a5 5 0 0 0-6.7 6.7L3 18l3 3 4.8-4.8a5 5 0 0 0 6.7-6.7l-3 3-3-3 3-3Z" />
+              </svg>
+            </div>
+            <h3>Technical Support</h3>
+            <p>
+              Organization of repairs, maintenance, and inspections with
+              trusted specialist workshops.
+            </p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 3h9l4 4v14H6zM15 3v5h5M9 12h7M9 16h7" />
+              </svg>
+            </div>
+            <h3>Legal &amp; Customs Services</h3>
+            <p>
+              Processing of all required documentation and legal formalities
+              with the port authorities.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="port">
+      <div class="container">
+        <div class="section-title">
+          <h2>The Port of Thessaloniki</h2>
+          <p>
+            The most important transport hub in Northern Greece and the
+            Balkans.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <h3>24/7</h3>
+            <p>Service</p>
+          </div>
+          <div class="stat">
+            <h3>12m+</h3>
+            <p>Draft</p>
+          </div>
+          <div class="stat">
+            <h3>6</h3>
+            <p>Berths</p>
+          </div>
+          <div class="stat">
+            <h3>100%</h3>
+            <p>ISPS Security</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>
+            We are available around the clock for any information or
+            assistance you may need.
+          </p>
+        </div>
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+                  <circle cx="12" cy="10" r="2" />
+                </svg>
+              </div>
+              <div>
+                <h3>Address</h3>
+                <p>Port of Thessaloniki, 54625</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 19a19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.7 9.7a16 16 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z" />
+                </svg>
+              </div>
+              <div>
+                <h3>Phone</h3>
+                <p>
+                  <a href="tel:+306984882957">+30 6984882957</a><br />
+                  <a href="tel:+306971984987">+30 6971984987</a><br />
+                  <a href="tel:+302310930786">+30 2310930786</a>
+                </p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+              </div>
+              <div>
+                <h3>Email</h3>
+                <p>
+                  <a href="mailto:petaloudash@gmail.com">agency@skgport.com</a><br />
+                  <a href="mailto:petaloudash@gmail.com">agency@skgport.gr</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contact-form">
+            <input name="name" type="text" placeholder="Full name" aria-label="Full name" autocomplete="name"
+              required />
+            <input name="email" type="email" placeholder="Email" aria-label="Your email" autocomplete="email"
+              required />
+            <input name="subject" type="text" placeholder="Subject" aria-label="Subject" />
+            <textarea name="message" placeholder="Your message..." aria-label="Your message" required></textarea>
+            <button class="button" type="submit">Send Message</button>
+            <p class="form-note">
+              Sending opens your email app with the message ready to send.
+            </p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a class="logo" href="#home">SKG <span>PORT AGENCY</span></a>
+        <p>Professional maritime services at the Port of Thessaloniki.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 SKG Port Agency. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      menuToggle.querySelector("span").textContent = isOpen ? "×" : "☰";
+    });
+
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+        menuToggle.querySelector("span").textContent = "☰";
+      });
+    });
+
+    document.querySelector("#contact-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const details = new FormData(form);
+      const subject = encodeURIComponent(
+        details.get("subject") || "Website enquiry — SKG Port Agency",
+      );
+      const body = encodeURIComponent(
+        `Name: ${details.get("name")}\nReply email: ${details.get("email")}\n\n${details.get("message")}`,
+      );
+      document.querySelector("#form-status").textContent =
+        "Your email app should open with your message ready to send.";
+      window.location.href = `mailto:petaloudash@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+
+</html>
