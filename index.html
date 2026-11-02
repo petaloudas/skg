@@ -70,15 +70,22 @@
       justify-content: space-between;
     }
 
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      white-space: nowrap;
+    .site-logo {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      line-height: 0;
     }
 
-    .logo span {
-      color: var(--cyan);
+    .site-logo img {
+      display: block;
+      width: clamp(285px, 31vw, 410px);
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.32));
+    }
+
+    .footer .site-logo img {
+      width: clamp(260px, 28vw, 360px);
     }
 
     .nav {
@@ -503,8 +510,8 @@
     }
 
     @media (max-width: 420px) {
-      .logo {
-        font-size: 19px;
+      .site-logo img {
+        width: 230px;
       }
 
       .hero p {
@@ -537,7 +544,9 @@
 <body>
   <header class="header">
     <div class="container navbar">
-      <a class="logo" href="#home" aria-label="SKG Port Agency home">SKG <span>PORT AGENCY</span></a>
+      <a class="site-logo" href="#home" aria-label="SKG Port and Ship Agency home">
+        <img src="./images/skg-port-ship-agency-logo.png" alt="SKG Port &amp; Ship Agency" width="935" height="196" />
+      </a>
       <nav class="nav" id="site-navigation" aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -781,7 +790,9 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <a class="logo" href="#home">SKG <span>PORT AGENCY</span></a>
+        <a class="site-logo" href="#home" aria-label="SKG Port and Ship Agency home">
+          <img src="./images/skg-port-ship-agency-logo.png" alt="SKG Port &amp; Ship Agency" width="935" height="196" loading="lazy" />
+        </a>
         <p>Professional maritime services at the Port of Thessaloniki.</p>
       </div>
       <div class="footer-bottom">
