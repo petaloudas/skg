@@ -301,11 +301,31 @@
       gap: 40px;
     }
 
-    .about-image {
+    .about-service-icons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      justify-items: center;
+      align-items: center;
+      column-gap: 48px;
+      row-gap: 36px;
+      padding: 12px 0;
+    }
+
+    .about-service-icons img {
       display: block;
-      width: 100%;
+      width: min(100%, 150px);
       height: auto;
-      border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .about-service-icons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px 52px;
+      }
+
+      .about-service-icons img {
+        width: min(100%, 110px);
+      }
     }
 
     .about-content h2 {
@@ -675,7 +695,12 @@
 
     <section class="section" id="about">
       <div class="container about">
-        <img class="about-image" src="./images/skg-shipping-agent-services-2797962b7e.jpg" alt="Shipping agent services: owner's protective agency (OPA), crew change, husbandry services and technical support." width="1408" height="768" loading="lazy" decoding="async" />
+        <div class="about-service-icons" role="group" aria-label="Shipping agent services">
+          <img src="./images/skg-service-opa-spaced.webp" alt="Owners' Protecting Agency (OPA)" width="246" height="246" loading="lazy" decoding="async" />
+          <img src="./images/skg-service-crew-spaced.webp" alt="Crew change services" width="246" height="246" loading="lazy" decoding="async" />
+          <img src="./images/skg-service-husbandry-spaced.webp" alt="Husbandry services" width="246" height="246" loading="lazy" decoding="async" />
+          <img src="./images/skg-service-technical-spaced.webp" alt="Technical support" width="246" height="246" loading="lazy" decoding="async" />
+        </div>
         <div class="about-content">
           <div class="check"><span class="check-mark">✓</span>24/7 availability and support</div>
           <div class="check"><span class="check-mark">✓</span>Fast processing of port formalities</div>
