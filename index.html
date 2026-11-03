@@ -280,15 +280,16 @@
 
     .about {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       align-items: center;
-      gap: 70px;
+      gap: 40px;
     }
 
     .about-image {
-      min-height: 500px;
+      display: block;
+      width: 100%;
+      height: auto;
       border-radius: 4px;
-      background: url("./images/skg-container-vessel.jpg") center / cover no-repeat;
     }
 
     .about-content h2 {
@@ -587,9 +588,6 @@
         padding: 14px 20px;
       }
 
-      .about-image {
-        min-height: 340px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -643,7 +641,9 @@
 
     <section class="section" id="about">
       <div class="container about">
-        <div class="about-image" role="img" aria-label="Cargo vessel at a port"></div>
+        <a href="./images/skg-shipping-agent-services-2797962b7e.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open shipping agent services image at full size" title="Open image at full size">
+          <img class="about-image" src="./images/skg-shipping-agent-services-2797962b7e.jpg" alt="Shipping agent services: owner's protective agency (OPA), crew change, husbandry services and technical support." width="1408" height="768" loading="lazy" decoding="async" />
+        </a>
         <div class="about-content">
           <h2>Specialized Ship Agency Services</h2>
           <p>
