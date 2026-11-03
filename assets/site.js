@@ -99,11 +99,7 @@
         name: get("name"),
         email: get("email"),
         message: get("message"),
-        _replyto: get("email"),
-        _template: "table",
-        _captcha: "false",
-        _honey: "",
-        _url: "https://skgportagency.gr" + location.pathname,
+        _gotcha: "",
         enquiry_page: location.pathname,
         enquiry_type: quote ? "Proforma / Agency Quote" : "General enquiry",
         ...campaign
@@ -116,11 +112,10 @@
           imo: get("imo") || "Not provided",
           eta_thessaloniki_local_time: get("eta") || "To be confirmed",
           requested_service: serviceNames[service],
-          _subject: `Agency quote — ${serviceNames[service]} — ${get("vessel")}`.slice(0, 180)
+          subject: `Agency quote — ${serviceNames[service]} — ${get("vessel")}`.slice(0, 180)
         });
       } else {
-        payload._subject = get("subject") || "Website enquiry — SKG Port Agency";
-        payload.subject = payload._subject;
+        payload.subject = get("subject") || "Website enquiry — SKG Port Agency";
       }
       sending = true;
       const controls = [...form.querySelectorAll("input, select, textarea, button")];
@@ -135,14 +130,17 @@
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 25000);
       try {
-        const response = await fetch("https://formsubmit.co/ajax/office@skgportagency.gr", {
+        const response = await fetch("https://formspree.io/f/xpppovvk", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(payload),
           signal: controller.signal
         });
         const result = await response.json();
-        if (!response.ok || !(result.success === true || result.success === "true")) {
+        if (response.status === 429) {
+          throw new Error("RATE_LIMIT");
+        }
+        if (!response.ok || result.ok !== true || (Array.isArray(result.errors) && result.errors.length)) {
           throw new Error("Enquiry not accepted");
         }
         status.dataset.state = "success";
@@ -156,7 +154,9 @@
         signal("enquiry_submitted", { kind: quote ? "quote" : "contact", service });
       } catch (error) {
         status.dataset.state = "error";
-        status.textContent = error.name === "AbortError"
+        status.textContent = error.message === "RATE_LIMIT"
+          ? "Online enquiries are temporarily unavailable. Your details are still here. Please contact us directly by phone or email."
+          : error.name === "AbortError"
           ? "We could not confirm whether your enquiry was sent. Your details are still here. Please call or email us directly for urgent assistance."
           : "Your enquiry could not be sent. Your details are still here. Please try again later or contact us directly by phone or email.";
         signal("enquiry_failed", { kind: quote ? "quote" : "contact", service });
